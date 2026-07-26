@@ -1,0 +1,28 @@
+digraph Loan_Approval_CFG {
+	rankdir=TB
+	A [label=Start fillcolor=purple style=filled]
+	B [label="Define
+income,credit,debt" fillcolor=orange style=filled]
+	C [label="Income Verified?" fillcolor=yellow shape=diamond style=filled]
+	D [label="Credit Score >=700?" fillcolor=yellow shape=diamond style=filled]
+	E [label="Debt Ratio <=40%?" fillcolor=yellow shape=diamond style=filled]
+	F [label="Loan Approved" fillcolor=green style=filled]
+	G [label="Loan Rejected" fillcolor=salmon style=filled]
+	H [label=End fillcolor=purple style=filled]
+	A -> B
+	B -> C [label="definition(income)"]
+	C -> D [label="YES
+usage(income)"]
+	C -> G [label="NO
+usage(income)"]
+	D -> E [label="YES
+usage(credit)"]
+	D -> G [label="NO
+usage(credit)"]
+	E -> F [label="YES
+usage(debt)"]
+	E -> G [label="NO
+usage(debt)"]
+	F -> H
+	G -> H
+}
